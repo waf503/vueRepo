@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio-tabla</title>
+</head>
+<body>
+
+  <div id="app">
+    <table border="2px">
+        <thead>
+            <tr>
+                <th>Modelo</th>
+                <th>Compañia</th>
+                <th>Valor Unidad</th>
+                <th>Fecha</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr v-for="data in stock">
+                <th>{{data.modelo}}</th>
+                <th>{{data.compañia}}</th>
+                <th>{{data.valor | valor}}</th>
+                <th>{{data.fecha | fecha}}</th>
+            </tr>
+        </tbody>
+    </table>
+  </div>
+  <hr>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.14.1/moment-with-locales.js"></script>
+    <script src="https://cdn.jsdelivr.net/accounting.js/0.3.2/accounting.js"></script>
+    <script>
+        Vue.filter('valor', function(data){
+            return accounting.formatMoney(data, "$", 2, ".", ",");
+        })
+
+        Vue.filter('fecha', function(data){
+            return moment(data).format('MMMM Do YYYY');
+        })
+        
+      const app = new Vue({
+        el:'#app',
+        data:{
+            stock: [
+                //object
+                {modelo: 'Iphone XR', compañia: "Apple", valor:'450', fecha:'2018-09-12'},
+                {modelo: 'Samsung', compañia: "Claro", valor:'430', fecha:'2019-05-11'},
+            ]
+        }
+      })
+    </script>
+  </body>
+</html> 

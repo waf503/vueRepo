@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>V-For</title>
+</head>
+<body>
+
+  <div id="app">
+    <li v-for="data in persona">
+        {{data}}
+    </li>
+    <p>Dias de la semana</p>
+    <li v-for="data in arreglo">
+        {{data}}
+    </li>
+  </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <script>
+      const app = new Vue({
+        el:'#app',
+        data:{
+            persona:{
+                nombre:"Wilmer",
+                edad:26
+            },
+            arreglo:["Lunes","Martes","Miercoles"]
+        }
+      })
+    </script>
+  </body>
+</html>
